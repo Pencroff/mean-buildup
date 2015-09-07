@@ -1,2 +1,2 @@
-# mean-build-up
-Mean back-end for Angular BuildUp (Dublin)
+# mean-buildup
+Mean back-end for [Angular BuildUp](http://angularbuildup.com/) in Dublin
