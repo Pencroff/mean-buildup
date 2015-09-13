@@ -12,6 +12,10 @@ var bodyParser   = require('body-parser');
 
 var conf = require('kea-config');
 
+var authApi = require('./server/auth-api');
+var publicApi = require('./server/public-api');
+var protectedApi = require('./server/protected-api');
+
 conf.setup('./config');
 
 app.set('view engine', 'jade'); // set up ejs for templating
@@ -24,12 +28,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // get information from html forms
 
 app.get('/', function (req, res) {
-    res.send('Hello World!');
+    return res.render('home.jade');
 });
 
-app.get('/json', function (req, res) {
-    res.status(200).json({ message: 'hello world!' })
-});
+app.use('/auth', authApi);
+app.use('/public', publicApi);
+app.use('/protected', protectedApi);
 
 app.use(function(req, res, next){
     res.status(404);
@@ -45,7 +49,7 @@ app.use(function(req, res, next){
     }
 
     // default to plain-text. send()
-    res.type('txt').send('Not found');
+    return res.type('txt').send('Not found');
 });
 
 var server = app.listen(conf.get('server.port'), function () {

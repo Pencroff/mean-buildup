@@ -6,10 +6,11 @@
 
 exports.server = {
     port: 8070,
-    'token-secret': 'bla-bla-bla',
+    'tokenSecret': 'bla-bla-bla',
     user: {
         name: 'Brad Pitt',
         login: 'brad-pitt',
-        password: 'magic-password'
+        password: 'magic-password',
+        logged: true
     }
 };
