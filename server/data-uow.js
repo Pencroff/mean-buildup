@@ -41,6 +41,14 @@ repoCache.room = context.defineResource({
     table: 'rooms'
 });
 
+repoCache.booking = context.defineResource({
+    name: 'booking',
+    idAttribute: '_id',
+    table: 'bookings'
+});
+
+
+
 function getRepoFn(name){
     return repoCache[name];
 }

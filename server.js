@@ -11,14 +11,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 
 var conf = require('kea-config');
+conf.setup('./config');
 
 var authApi = require('./server/auth-api');
 var publicApi = require('./server/public-api');
 var protectedApi = require('./server/protected-api');
-
-conf.setup('./config');
-
-var uow = require('./server/data-uow');
 
 app.set('view engine', 'jade'); // set up ejs for templating
 app.engine('jade', require('jade').__express);
