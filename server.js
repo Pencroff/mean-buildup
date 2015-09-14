@@ -18,6 +18,8 @@ var protectedApi = require('./server/protected-api');
 
 conf.setup('./config');
 
+var uow = require('./server/data-uow');
+
 app.set('view engine', 'jade'); // set up ejs for templating
 app.engine('jade', require('jade').__express);
 app.set('views', './server/views');
