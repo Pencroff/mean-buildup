@@ -27,14 +27,13 @@ protectedApi.get('/:repo', function (req, res) {
         .findAll(req.queryObj)
         .then(function(result) {
             console.log('Get list - then', req.repo.name);
-            res.status(200).json(result);
+            res.status(200).json({
+                success: true,
+                data: result
+            });
         })
         .catch(function(err) {
-            console.log(err.stack);
-            res.status(500).json({
-                success: false,
-                msg: err.message
-            });
+            tools.processError(err, res);
         });
 });
 
@@ -42,14 +41,13 @@ protectedApi.get('/:repo', function (req, res) {
 protectedApi.get('/:repo/:id', function (req, res) {
     req.repo.find(req.params.id)
         .then(function(result) {
-            res.status(200).json(result);
+            res.status(200).json({
+                success: true,
+                data: result
+            });
         })
         .catch(function(err) {
-            console.log(err.stack);
-            res.status(500).json({
-                success: false,
-                msg: err.message
-            });
+            tools.processError(err, res);
         });
 });
 
@@ -57,14 +55,13 @@ protectedApi.get('/:repo/:id', function (req, res) {
 protectedApi.post('/:repo', function (req, res) {
     req.repo.create(req.body)
         .then(function(result) {
-            res.status(200).json(result);
+            res.status(200).json({
+                success: true,
+                data: result
+            });
         })
         .catch(function(err) {
-            console.log(err.stack);
-            res.status(500).json({
-                success: false,
-                msg: err.message
-            });
+            tools.processError(err, res);
         });
 });
 
@@ -72,28 +69,26 @@ protectedApi.post('/:repo', function (req, res) {
 protectedApi.put('/:repo/:id', function (req, res) {
     req.repo.update(req.params.id, req.body)
         .then(function(result) {
-            res.status(200).json(result);
+            res.status(200).json({
+                success: true,
+                data: result
+            });
         })
         .catch(function(err) {
-            console.log(err.stack);
-            res.status(500).json({
-                success: false,
-                msg: err.message
-            });
+            tools.processError(err, res);
         });
 });
 
 // delete item
 protectedApi.delete('/:repo/:id', function (req, res) {
     req.repo.destroy(req.params.id)
-        .then(function(result) {
-            res.status(200).json(result);
+        .then(function() {
+            res.status(200).json({
+                success: true,
+                destroyed: req.params.id
+            });
         })
         .catch(function(err) {
-            console.log(err.stack);
-            res.status(500).json({
-                success: false,
-                msg: err.message
-            });
+            tools.processError(err, res);
         });
 });

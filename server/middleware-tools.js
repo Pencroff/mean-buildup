@@ -8,6 +8,8 @@ exports.querySerializer = querySerializerFn;
 
 exports.repoNameParser = repoNameParserFn;
 
+exports.processError = processErrorFn;
+
 function querySerializerFn(req, res, next) {
     var queryObj = {},
         keys = Object.keys(req.query),
@@ -33,4 +35,14 @@ function repoNameParserFn(req, res, next, repoName) {
     } else {
         next(new Error('Resource ' + repoName + 'not available'));
     }
-};
+}
+
+function processErrorFn (err, res) {
+    if (err) {
+        console.log(err.stack);
+        res.status(500).json({
+            success: false,
+            msg: err.message
+        });
+    }
+}

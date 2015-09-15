@@ -13,7 +13,10 @@ exports.logoutUser = logoutUserFn;
 exports.verifyToken = verifyTokenFn;
 
 function middlewareFn(req, res, next) {
-    var token = req.body.token || req.params.token || req.headers['x-access-token'];
+    var token = req.body.token || req.params.token || req.query.token || req.headers['x-access-token'];
+    delete req.body.token;
+    delete req.params.token;
+    delete req.query.token;
     verifyTokenFn(token)
         .then(function(tokenInfo) {
             req.tokenInfo = tokenInfo;
