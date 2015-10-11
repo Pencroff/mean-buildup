@@ -17,6 +17,14 @@ MEAN back-end for [Angular BuildUp](http://angularbuildup.com/)
 
 ### Public
 
+We have two models: `room`, `booking`.
+Each of them has API like `GET /public/booking` or `PUT /public/booking/55f726cd04a9738412e8db5c`.
+More details see below:
+
+* `GET /public/:model/` - list of all entities in collection
+* `GET /public/:model/:id` - get entity by id
+* `POST /public/booking` - create new `booking`, all details should be in request `body`
+
 ### Auth
 
 All requests are `POST`.
@@ -46,13 +54,5 @@ More details see below:
 * `GET /protected/:model/:id` - get entity by id
 * `POST /protected/:model` - create new entity, all details should be in request `body`
 * `PUT /protected/:model/:id` - update entity by id, all details should be in request `body`
-* `DELETE /protected/:model/:id` - delete entity by id
-
-## Questions
-
-* Host page for app? - app with layout + header + js (angular)
-* What actions should be in public api? - post booking + get all collections
-* Check queries
-* check POST and PUT in $http - ok
-* populate start data 
+* `DELETE /protected/:model/:id` - delete entity by id 
 
