@@ -1,0 +1,15 @@
+//- Created by Pencroff on 13-Sep-15.
+
+extends layout
+block content
+    .center
+        h1 Angular BuildUP
+        p Mean back-end for Angular BuildUp (Dublin)
+    .center
+        h3  Login form
+        form(action="/auth/login" method="POST")
+            input(name="login" type="text")
+            br
+            input(name="password" type="password")
+            br
+            button(type="submit") Login
