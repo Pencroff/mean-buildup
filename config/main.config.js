@@ -14,10 +14,10 @@ exports.server = {
         logged: true
     },
     mongoConf: {
-        login: 'johnny-depp',
-        password: 'johnny-depp',
-        server: 'ds055872.mongolab.com',
-        port: '55872',
+        login: 'user',
+        password: 'password',
+        server: 'db.mongolab.com',
+        port: '27072',
         dbName: 'angular-buildup'
     },
     mongoUri: {
