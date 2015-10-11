@@ -3,10 +3,15 @@ MEAN back-end for [Angular BuildUp](http://angularbuildup.com/)
 
 ## Setup
 
-* Setup VS2013 community edition (not VS2015) - it needs for rebuilding mongodb drivers
-* Setup node.js
-* `npm i`
-* `node server`
+* Setup [VS2015](https://www.visualstudio.com/products/visual-studio-community-vs) community edition - it needs for rebuilding mongodb drivers
+* Setup [node.js](https://nodejs.org/en/)
+* Setup [Git](https://git-scm.com/downloads)
+* Clone git repo [mean-buildup](https://github.com/Pencroff/mean-buildup)
+* Open folder with project in command line 
+* Run `npm i` for installing all dependencies
+* Setup `mongoConf` in `./config/main.config.js`
+* Run `node server` for local server
+* Enjoy Angular development :)
 
 ## API
 

@@ -30,9 +30,15 @@ app.get('/', function (req, res) {
     return res.render('home.jade');
 });
 
+app.get('/app', function (req, res) {
+    return res.render('app.jade');
+});
+
 app.use('/auth', authApi);
 app.use('/public', publicApi);
 app.use('/protected', protectedApi);
+
+app.use('/static', express.static('./client'));
 
 app.use(function(req, res, next){
     res.status(404);
