@@ -8,7 +8,7 @@ MEAN back-end for [Angular BuildUp](http://angularbuildup.com/)
 * Setup [Git](https://git-scm.com/downloads)
 * Clone git repo [mean-buildup](https://github.com/Pencroff/mean-buildup) by command
 ```
-    git clone git@github.com:Pencroff/mean-buildup.git
+    git clone https://github.com/Pencroff/mean-buildup.git
 ```
 * Open folder with project in command line 
 * Run `npm i` for installing all dependencies
