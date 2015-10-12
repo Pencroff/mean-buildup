@@ -10,7 +10,10 @@ MEAN back-end for [Angular BuildUp](http://angularbuildup.com/)
 ```
     git clone https://github.com/Pencroff/mean-buildup.git
 ```
-* Open folder with project in command line 
+* Open folder with project in command line or just continue in **cmd**
+```
+    cd mean-buildup
+```
 * Run `npm i` for installing all dependencies
 * Setup `mongoConf` in `./config/main.config.js`
 * Run `node server` for local server
