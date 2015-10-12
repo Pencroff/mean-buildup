@@ -2,6 +2,8 @@
  * Created by Pencroff on 14-Sep-15.
  */
 
+var _ = require('lodash');
+
 var uow = require('./data-uow');
 
 exports.querySerializer = querySerializerFn;
@@ -11,17 +13,20 @@ exports.repoNameParser = repoNameParserFn;
 exports.processError = processErrorFn;
 
 function querySerializerFn(req, res, next) {
-    var queryObj = {},
-        keys = Object.keys(req.query),
-        len = keys.length,
-        str, i, obj;
-    for (i = 0; i < len; i += 1) {
-        str = req.query[keys[i]];
-        try {
-            obj = JSON.parse(str);
-            queryObj[keys[i]] = obj;
-        } catch(err) { }
-    }
+    var queryObj = {};
+    _.forOwn(req.query, function(value, key) {
+        if (_.isString(value)) {
+            try {
+                queryObj[key] = JSON.parse(value);
+            } catch (err) {
+                queryObj[key] = value;
+            }
+        } else if (_.isArray(value)) {
+            queryObj[key] = _.map(value, function(item) {
+                return JSON.parse(item);
+            });
+        }
+    });
     req.queryObj = queryObj;
     next();
 }

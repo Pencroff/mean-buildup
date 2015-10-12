@@ -18,7 +18,6 @@ publicApi.param('repo', tools.repoNameParser);
 
 // get list should support query
 publicApi.get('/:repo', function (req, res) {
-    console.log(req);
     req.repo
         .findAll(req.queryObj)
         .then(function(result) {

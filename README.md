@@ -6,7 +6,10 @@ MEAN back-end for [Angular BuildUp](http://angularbuildup.com/)
 * Setup [VS2015](https://www.visualstudio.com/products/visual-studio-community-vs) community edition - it needs for rebuilding mongodb drivers
 * Setup [node.js](https://nodejs.org/en/)
 * Setup [Git](https://git-scm.com/downloads)
-* Clone git repo [mean-buildup](https://github.com/Pencroff/mean-buildup)
+* Clone git repo [mean-buildup](https://github.com/Pencroff/mean-buildup) by command
+```
+    git clone git@github.com:Pencroff/mean-buildup.git
+```
 * Open folder with project in command line 
 * Run `npm i` for installing all dependencies
 * Setup `mongoConf` in `./config/main.config.js`
@@ -56,3 +59,13 @@ More details see below:
 * `PUT /protected/:model/:id` - update entity by id, all details should be in request `body`
 * `DELETE /protected/:model/:id` - delete entity by id 
 
+### Query syntax
+
+Current project support query syntax for all requests for collections such as `GET /protected/:model/` and `GET /public/:model/`.
+For example:
+```
+    /public/room?doubleBed=true                     - will ask all rooms with double bed
+    /public/room?doubleBed=true&standard=premium    - double bed "premium" standard
+```
+Also it's possible to use more complex requests with `where`, `orderBy`, `offset` and `limit` clauses.
+More details please read in the original docs [js-data.io/query-syntax](http://www.js-data.io/docs/query-syntax)
